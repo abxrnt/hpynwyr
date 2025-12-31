@@ -2,349 +2,380 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goodbye 2025 • Welcome 2026</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goodbye 2025 • Welcome 2026</title>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@500;700&family=Noto+Serif+Bengali:wght@600;700&family=Great+Vibes&family=Poppins:wght@500;600&display=swap"
-        rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@500;700&family=Noto+Serif+Bengali:wght@600;700&family=Great+Vibes&family=Poppins:wght@500;600&display=swap"
+    rel="stylesheet">
 
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            color: #fff;
-            font-family: 'Pacifico', cursive;
-        }
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+      color: #fff;
+      font-family: 'Pacifico', cursive;
+    }
 
-        .bg-video {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -3
-        }
+    body {
+      overflow-y: auto;
+    }
 
-        .overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, .65);
-            z-index: -2
-        }
+    .bg-video {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -3;
+    }
 
-        .layout {
-            height: 100vh;
-            max-width: 1600px;
-            margin: auto;
-            padding: 16px 28px;
-            display: grid;
-            grid-template-rows: auto 1fr;
-            gap: 12px;
-        }
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .65);
+      z-index: -2;
+    }
 
-        .top-wish {
-            text-align: center;
-            font-size: 1.6rem;
-            opacity: .95;
-        }
+    .layout {
+      min-height: 100vh;
+      max-width: 1600px;
+      margin: auto;
+      padding: 14px 20px 30px;
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 12px;
+    }
 
-        .name-highlight {
-            color: #ffd166;
-            text-shadow: 0 0 18px rgba(255, 180, 0, .9);
-            font-weight: 700;
-        }
+    .top-wish {
+      text-align: center;
+      font-size: 1.4rem;
+      opacity: .95;
+      word-break: break-word;
+    }
 
-        .columns {
-            display: grid;
-            grid-template-columns: 1fr;
-            align-items: center;
-        }
+    .name-highlight {
+      color: #ffd166;
+      text-shadow: 0 0 14px rgba(255, 180, 0, .9);
+      font-weight: 700;
+    }
 
-        @media(min-width:900px) {
-            .columns { grid-template-columns: 1fr 1.1fr 1fr; gap: 24px; }
-            .en { order: 1 }
-            .center { order: 2 }
-            .as { order: 3 }
-        }
+    .columns {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
 
-        @media(max-width:899px) {
-            .en { order: 1 }
-            .as { order: 2 }
-            .center { order: 3 }
-            .top-wish { font-size: 1.4rem }
-        }
+    .col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 6px;
+    }
 
-        .col {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 6px;
-        }
+    .en .bye {
+      font-size: 1.05rem;
+      opacity: .9;
+    }
 
-        .en .bye { font-size: 1.25rem; opacity: .9 }
-        .en .title { font-size: 2.2rem }
-        .en .quote {
-            font-family: 'Poppins', sans-serif;
-            font-size: .95rem;
-            font-style: italic;
-            opacity: .85;
-            max-width: 420px;
-        }
-        .en .year {
-            font-family: 'Great Vibes', cursive;
-            font-size: 5.1rem;
-            color: #ffd166;
-            text-shadow: 0 0 35px rgba(255, 180, 0, .8);
-        }
+    .en .title {
+      font-size: 1.7rem;
+    }
 
-        .as { font-family: 'Noto Serif Bengali', serif; }
-        .as .bye { font-size: 1.1rem; opacity: .9 }
-        .as .title {
-            font-size: 2.9rem;
-            background: linear-gradient(90deg, #ffe8b0, #ffd166, #fff3d6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .as .quote {
-            font-size: .95rem;
-            font-style: italic;
-            opacity: .85;
-            max-width: 420px;
-        }
-        .as .year { font-size: 3.8rem; color: #ffd166; }
+    .en .quote {
+      font-family: 'Poppins', sans-serif;
+      font-size: .8rem;
+      font-style: italic;
+      opacity: .85;
+      max-width: 320px;
+      line-height: 1.4;
+    }
 
-        .center { gap: 14px }
+    .en .year {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.2rem;
+      color: #ffd166;
+      text-shadow: 0 0 24px rgba(255, 180, 0, .8);
+    }
 
-        .countdown { display: flex; gap: 10px; }
-        .time-box {
-            width: 70px;
-            padding: 10px;
-            background: rgba(0, 0, 0, .6);
-            border-radius: 14px;
-        }
-        .time-box span { font-size: 1.3rem; color: #ffd166; }
-        .time-box small {
-            font-family: 'Noto Serif Bengali', serif;
-            font-size: .65rem;
-        }
+    .as {
+      font-family: 'Noto Serif Bengali', serif;
+    }
 
-        .input-wrap {
-            width: 100%;
-            max-width: 320px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+    .as .bye {
+      font-size: .95rem;
+      opacity: .9;
+    }
 
-        input {
-            padding: 12px;
-            border-radius: 38px;
-            border: none;
-            background: rgba(0, 0, 0, .65);
-            color: #fff;
-            text-align: center;
-            font-family: 'Dancing Script', cursive;
-            font-size: 1rem;
-        }
+    .as .title {
+      font-size: 2rem;
+      background: linear-gradient(90deg, #ffe8b0, #ffd166, #fff3d6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-        button {
-            padding: 14px;
-            border-radius: 38px;
-            border: none;
-            background: linear-gradient(45deg, #ffd166, #ff8c00);
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-        }
+    .as .quote {
+      font-size: .8rem;
+      font-style: italic;
+      opacity: .85;
+      max-width: 320px;
+      line-height: 1.4;
+    }
 
-        .link {
-            font-size: .75rem;
-            padding: 8px;
-            background: rgba(0, 0, 0, .6);
-            border-radius: 11px;
-            word-break: break-all;
-        }
-        /* 📱 MOBILE OPTIMIZATION */
-@media (max-width: 600px) {
+    .as .year {
+      font-size: 2.6rem;
+      color: #ffd166;
+    }
 
-  body {
-    font-size: 12px;
-  }
+    .center {
+      gap: 10px;
+    }
 
-  .layout {
-    padding: 10px 14px;
-    gap: 8px;
-  }
+    .countdown {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-  .top-wish {
-    font-size: 1.15rem;
-  }
+    .time-box {
+      width: 56px;
+      padding: 6px;
+      background: rgba(0, 0, 0, .6);
+      border-radius: 10px;
+    }
 
-  /* ENGLISH COLUMN */
-  .en .bye { font-size: 1rem; }
-  .en .title { font-size: 1.6rem; }
-  .en .quote { font-size: .8rem; }
-  .en .year { font-size: 3.2rem; }
+    .time-box span {
+      font-size: 1.05rem;
+      color: #ffd166;
+    }
 
-  /* ASSAMESE COLUMN */
-  .as .bye { font-size: .95rem; }
-  .as .title { font-size: 2rem; }
-  .as .quote { font-size: .8rem; }
-  .as .year { font-size: 2.6rem; }
+    .time-box small {
+      font-family: 'Noto Serif Bengali', serif;
+      font-size: .55rem;
+    }
 
-  /* CENTER */
-  .center { gap: 10px; }
+    .input-wrap {
+      width: 100%;
+      max-width: 260px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
-  .countdown {
-    gap: 6px;
-  }
+    input {
+      padding: 10px;
+      border-radius: 30px;
+      border: none;
+      background: rgba(0, 0, 0, .65);
+      color: #fff;
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      font-size: .85rem;
+    }
 
-  .time-box {
-    width: 54px;
-    padding: 6px;
-    border-radius: 10px;
-  }
+    button {
+      padding: 11px;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(45deg, #ffd166, #ff8c00);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: .85rem;
+      cursor: pointer;
+    }
 
-  .time-box span {
-    font-size: 1.05rem;
-  }
+    .link {
+      font-size: .65rem;
+      padding: 8px;
+      background: rgba(0, 0, 0, .65);
+      border-radius: 10px;
+      word-break: break-all;
+      max-width: 280px;
+    }
 
-  .time-box small {
-    font-size: .55rem;
-  }
+    @media (min-width: 900px) {
+      .columns {
+        grid-template-columns: 1fr 1.1fr 1fr;
+        align-items: center;
+      }
 
-  /* INPUT + BUTTON */
-  .input-wrap {
-    max-width: 260px;
-    gap: 8px;
-  }
+      .top-wish {
+        font-size: 1.6rem;
+      }
 
-  input {
-    padding: 10px;
-    font-size: .85rem;
-  }
+      .en .title {
+        font-size: 2.2rem;
+      }
 
-  button {
-    padding: 11px;
-    font-size: .85rem;
-  }
+      .en .year {
+        font-size: 5.1rem;
+      }
 
-  .link {
-    font-size: .65rem;
-    padding: 6px;
-  }
-}
+      .as .title {
+        font-size: 2.9rem;
+      }
 
-    </style>
+      .as .year {
+        font-size: 3.8rem;
+      }
+
+      .en .quote,
+      .as .quote {
+        max-width: 420px;
+        font-size: .95rem;
+      }
+
+      .countdown {
+        gap: 10px;
+      }
+
+      .time-box {
+        width: 70px;
+        padding: 10px;
+      }
+
+      .time-box span {
+        font-size: 1.3rem;
+      }
+
+      .time-box small {
+        font-size: .65rem;
+      }
+
+      .input-wrap {
+        max-width: 320px;
+      }
+
+      input {
+        font-size: 1rem;
+        padding: 12px;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 14px;
+      }
+
+      .link {
+        font-size: .75rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <video class="bg-video" autoplay muted loop playsinline>
-        <source src="bg.mp4" type="video/mp4">
-    </video>
-    <div class="overlay"></div>
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="bg.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
 
-    <main class="layout">
-        <div id="topWish" class="top-wish"></div>
+  <main class="layout">
+    <div id="topWish" class="top-wish"></div>
 
-        <div class="columns">
+    <div class="columns">
 
-            <section class="col en">
-                <div class="bye">Goodbye 2025, thanks for everything</div>
-                <div class="title">Happy New Year</div>
-                <div class="quote">
-                    “As the new year begins, may you learn from the past without living in it,
-                    dream of the future without fearing it, and work in the present without excuses.”
-                </div>
-                <div class="year">2026</div>
-            </section>
-
-            <section class="col center">
-                <div class="countdown">
-                    <div class="time-box"><span id="d">00</span><small>দিন</small></div>
-                    <div class="time-box"><span id="h">00</span><small>ঘণ্টা</small></div>
-                    <div class="time-box"><span id="m">00</span><small>মিনিট</small></div>
-                    <div class="time-box"><span id="s">00</span><small>ছেকেণ্ড</small></div>
-                </div>
-
-                <div class="input-wrap">
-                    <input id="nameInput" placeholder="Enter your name / আপোনাৰ নাম লিখক">
-                    <button onclick="generate()">Create Your Link ✨</button>
-                </div>
-
-                <div id="result" class="link"></div>
-            </section>
-
-            <section class="col as">
-                <div class="bye">বিদায় ২০২৫, সকলো অভিজ্ঞতাৰ বাবে ধন্যবাদ</div>
-                <div class="title">নৱ বৰ্ষৰ শুভেচ্ছা</div>
-                <div class="quote">
-                    “এই বছৰে আপোনাৰ কষ্টক শিক্ষা কৰক, শিক্ষাক শক্তিত পৰিণত কৰক,
-                    আৰু সেই শক্তিৰে গৌৰৱ কৰিব পৰা জীৱন গঢ়ি তুলক।”
-                </div>
-                <div class="year">২০২৬</div>
-            </section>
-
+      <section class="col en">
+        <div class="bye">Goodbye 2025, thanks for everything</div>
+        <div class="title">Happy New Year</div>
+        <div class="quote">
+          “As the new year begins, may you learn from the past without living in it,
+          dream of the future without fearing it, and work in the present without excuses.”
         </div>
-    </main>
+        <div class="year">2026</div>
+      </section>
 
-    <script type="module">
-        import { collection, addDoc, getDoc, doc, serverTimestamp } 
-        from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-        import { db } from "./firebase.js";
+      <section class="col center">
+        <div class="countdown">
+          <div class="time-box"><span id="d">00</span><small>দিন</small></div>
+          <div class="time-box"><span id="h">00</span><small>ঘণ্টা</small></div>
+          <div class="time-box"><span id="m">00</span><small>মিনিট</small></div>
+          <div class="time-box"><span id="s">00</span><small>ছেকেণ্ড</small></div>
+        </div>
 
-        const topWish = document.getElementById("topWish");
-        const params = new URLSearchParams(location.search);
-        const id = params.get("id");
+        <div class="input-wrap">
+          <input id="nameInput" placeholder="Enter your name / আপোনাৰ নাম লিখক">
+          <button onclick="generate()">Create Your Link ✨</button>
+        </div>
 
-        let viewingSharedWish = false;
+        <div id="result" class="link"></div>
+      </section>
 
-        if (id) {
-            viewingSharedWish = true;
-            const snap = await getDoc(doc(db, "wishes", id));
-            if (snap.exists()) {
-                topWish.innerHTML =
-                    `<span class="name-highlight">${snap.data().senderName}</span> wishes you a Happy New Year 🎉`;
-            }
-        }
+      <section class="col as">
+        <div class="bye">বিদায় ২০২৫, সকলো অভিজ্ঞতাৰ বাবে ধন্যবাদ</div>
+        <div class="title">নৱ বৰ্ষৰ শুভেচ্ছা</div>
+        <div class="quote">
+          “এই বছৰে আপোনাৰ কষ্টক শিক্ষা কৰক, শিক্ষাক শক্তিত পৰিণত কৰক,
+          আৰু সেই শক্তিৰে গৌৰৱ কৰিব পৰা জীৱন গঢ়ি তুলক।”
+        </div>
+        <div class="year">২০২৬</div>
+      </section>
 
-        window.generate = async () => {
-            const name = nameInput.value.trim();
-            if (!name) return alert("Enter your name");
+    </div>
+  </main>
 
-            const ref = await addDoc(collection(db, "wishes"), {
-                senderName: name,
-                createdAt: serverTimestamp()
-            });
+  <script type="module">
+    import { collection, addDoc, getDoc, doc, serverTimestamp }
+      from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { db } from "./firebase.js";
 
-            const link = `${location.origin}${location.pathname}?id=${ref.id}`;
-            result.innerText = link;
+    const topWish = document.getElementById("topWish");
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
 
-            if (!viewingSharedWish) {
-                topWish.innerHTML =
-                    `<span class="name-highlight">${name}</span> wishes you a Happy New Year 🎉`;
-            }
-        };
-    </script>
+    let viewingSharedWish = false;
 
-    <script>
-        const target = new Date("Jan 1, 2026 00:00:00").getTime();
-        setInterval(() => {
-            const diff = target - Date.now();
-            if (diff <= 0) return;
-            d.textContent = Math.floor(diff / 86400000);
-            h.textContent = Math.floor((diff / 3600000) % 24);
-            m.textContent = Math.floor((diff / 60000) % 60);
-            s.textContent = Math.floor((diff / 1000) % 60);
-        }, 1000);
-    </script>
+    if (id) {
+      viewingSharedWish = true;
+      const snap = await getDoc(doc(db, "wishes", id));
+      if (snap.exists()) {
+        topWish.innerHTML =
+          `<span class="name-highlight">${snap.data().senderName}</span> wishes you a Happy New Year 🎉`;
+      }
+    }
+
+    window.generate = async () => {
+      const name = nameInput.value.trim();
+      if (!name) return alert("Enter your name");
+
+      const ref = await addDoc(collection(db, "wishes"), {
+        senderName: name,
+        createdAt: serverTimestamp()
+      });
+
+      const link = `${location.origin}${location.pathname}?id=${ref.id}`;
+      result.innerText = link;
+
+      if (!viewingSharedWish) {
+        topWish.innerHTML =
+          `<span class="name-highlight">${name}</span> wishes you a Happy New Year 🎉`;
+      }
+    };
+  </script>
+
+  <script>
+    const target = new Date("Jan 1, 2026 00:00:00").getTime();
+    setInterval(() => {
+      const diff = target - Date.now();
+      if (diff <= 0) return;
+      d.textContent = Math.floor(diff / 86400000);
+      h.textContent = Math.floor((diff / 3600000) % 24);
+      m.textContent = Math.floor((diff / 60000) % 60);
+      s.textContent = Math.floor((diff / 1000) % 60);
+    }, 1000);
+  </script>
+
 </body>
 
 </html>
