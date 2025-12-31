@@ -171,15 +171,23 @@
     }
 
     input {
-      padding: .8em;
-      border-radius: 2em;
-      border: none;
-      background: rgba(0, 0, 0, .65);
-      color: #fff;
-      text-align: center;
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(.85rem, 3.2vw, 1rem);
-    }
+  padding: 0.9em 1em;
+  border-radius: 1.6em;
+  border: none;
+  background: rgba(0, 0, 0, 0.842);
+  color: #ffffff;
+  text-align: center;
+
+  /* ✅ Modern, readable font */
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+
+  /* ✅ Slightly larger + clearer */
+  font-size: clamp(0.95rem, 3.6vw, 1.1rem);
+
+  outline: none;
+}
+
 
     button {
       padding: .9em;
@@ -318,44 +326,75 @@
     </div>
   </main>
 
-  <script type="module">
-    import { collection, addDoc, getDoc, doc, serverTimestamp }
-      from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-    import { db } from "./firebase.js";
+<script type="module">
+  import { collection, addDoc, getDoc, doc, serverTimestamp }
+    from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+  import { db } from "./firebase.js";
 
-    const topWish = document.getElementById("topWish");
-    const params = new URLSearchParams(location.search);
-    const id = params.get("id");
+  const topWish = document.getElementById("topWish");
+  const nameInput = document.getElementById("nameInput");
+  const result = document.getElementById("result");
+  const createBtn = document.querySelector(".input-wrap button");
 
-    let viewingSharedWish = false;
+  const params = new URLSearchParams(location.search);
+  const id = params.get("id");
 
-    if (id) {
-      viewingSharedWish = true;
-      const snap = await getDoc(doc(db, "wishes", id));
-      if (snap.exists()) {
-        topWish.innerHTML =
-          `<span class="name-highlight">${snap.data().senderName}</span> wishes you a Happy New Year 🎉`;
+  let viewingSharedWish = false;
+  let generatedLink = "";
+
+  if (id) {
+    viewingSharedWish = true;
+    const snap = await getDoc(doc(db, "wishes", id));
+    if (snap.exists()) {
+      topWish.innerHTML =
+        `<span class="name-highlight">${snap.data().senderName}</span> wishes you a Happy New Year 🎉`;
+    }
+  }
+
+  window.generate = async () => {
+    // 👉 If link already generated → SHARE
+    if (generatedLink) {
+      if (navigator.share) {
+        navigator.share({
+          title: "Happy New Year 2026 🎉",
+          text: "Check out my New Year wish ✨",
+          url: generatedLink
+        });
+      } else {
+        navigator.clipboard.writeText(generatedLink);
+        alert("Link copied!");
       }
+      return;
     }
 
-    window.generate = async () => {
-      const name = nameInput.value.trim();
-      if (!name) return alert("Enter your name");
+    // 👉 First time: CREATE LINK
+    const name = nameInput.value.trim();
+    if (!name) return alert("Enter your name");
 
-      const ref = await addDoc(collection(db, "wishes"), {
-        senderName: name,
-        createdAt: serverTimestamp()
-      });
+    const ref = await addDoc(collection(db, "wishes"), {
+      senderName: name,
+      createdAt: serverTimestamp()
+    });
 
-      const link = `${location.origin}${location.pathname}?id=${ref.id}`;
-      result.innerText = link;
+    generatedLink = `${location.origin}${location.pathname}?id=${ref.id}`;
 
-      if (!viewingSharedWish) {
-        topWish.innerHTML =
-          `<span class="name-highlight">${name}</span> wishes you a Happy New Year 🎉`;
-      }
-    };
-  </script>
+    // change input → link field
+    nameInput.value = generatedLink;
+    nameInput.readOnly = true;
+
+    // change button text
+    createBtn.textContent = "Share ✨";
+
+    // show link below (keeping your existing div)
+    result.innerText = generatedLink;
+
+    if (!viewingSharedWish) {
+      topWish.innerHTML =
+        `<span class="name-highlight">${name}</span> wishes you a Happy New Year 🎉`;
+    }
+  };
+</script>
+
 
   <script>
     const target = new Date("Jan 1, 2026 00:00:00").getTime();
