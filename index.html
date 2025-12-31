@@ -170,12 +170,75 @@
             border-radius: 11px;
             word-break: break-all;
         }
-        /* Hide English & Assamese quotes on mobile */
+        /* 📱 MOBILE OPTIMIZATION */
 @media (max-width: 600px) {
-    .en .quote,
-    .as .quote {
-        display: none;
-    }
+
+  body {
+    font-size: 12px;
+  }
+
+  .layout {
+    padding: 10px 14px;
+    gap: 8px;
+  }
+
+  .top-wish {
+    font-size: 1.15rem;
+  }
+
+  /* ENGLISH COLUMN */
+  .en .bye { font-size: 1rem; }
+  .en .title { font-size: 1.6rem; }
+  .en .quote { font-size: .8rem; }
+  .en .year { font-size: 3.2rem; }
+
+  /* ASSAMESE COLUMN */
+  .as .bye { font-size: .95rem; }
+  .as .title { font-size: 2rem; }
+  .as .quote { font-size: .8rem; }
+  .as .year { font-size: 2.6rem; }
+
+  /* CENTER */
+  .center { gap: 10px; }
+
+  .countdown {
+    gap: 6px;
+  }
+
+  .time-box {
+    width: 54px;
+    padding: 6px;
+    border-radius: 10px;
+  }
+
+  .time-box span {
+    font-size: 1.05rem;
+  }
+
+  .time-box small {
+    font-size: .55rem;
+  }
+
+  /* INPUT + BUTTON */
+  .input-wrap {
+    max-width: 260px;
+    gap: 8px;
+  }
+
+  input {
+    padding: 10px;
+    font-size: .85rem;
+  }
+
+  button {
+    padding: 11px;
+    font-size: .85rem;
+  }
+
+  .link {
+    font-size: .65rem;
+    padding: 6px;
+  }
 }
 
     </style>
