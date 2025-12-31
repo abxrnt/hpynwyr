@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Goodbye 2025 • Welcome 2026</title>
 
   <link
@@ -20,14 +21,10 @@
     html,
     body {
       width: 100%;
-      min-height: 100%;
-      overflow-x: hidden;
+      height: 100%;
+      overflow: hidden;
       color: #fff;
       font-family: 'Pacifico', cursive;
-    }
-
-    body {
-      overflow-y: auto;
     }
 
     .bg-video {
@@ -47,32 +44,33 @@
     }
 
     .layout {
-      min-height: 100vh;
+      height: 100vh;
       max-width: 1600px;
       margin: auto;
-      padding: 14px 20px 30px;
+      padding: 8px 10px;
       display: grid;
-      grid-template-rows: auto auto;
-      gap: 12px;
+      grid-template-rows: auto 1fr;
+      gap: 6px;
     }
 
     .top-wish {
       text-align: center;
-      font-size: 1.4rem;
+      font-size: .95rem;
       opacity: .95;
-      word-break: break-word;
+      line-height: 1.1;
     }
 
     .name-highlight {
       color: #ffd166;
-      text-shadow: 0 0 14px rgba(255, 180, 0, .9);
+      text-shadow: 0 0 10px rgba(255, 180, 0, .9);
       font-weight: 700;
     }
 
     .columns {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 18px;
+      align-items: center;
+      gap: 6px;
     }
 
     .col {
@@ -80,32 +78,32 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 6px;
+      gap: 4px;
     }
 
     .en .bye {
-      font-size: 1.05rem;
+      font-size: .7rem;
       opacity: .9;
     }
 
     .en .title {
-      font-size: 1.7rem;
+      font-size: 1.1rem;
     }
 
     .en .quote {
       font-family: 'Poppins', sans-serif;
-      font-size: .8rem;
+      font-size: .6rem;
       font-style: italic;
       opacity: .85;
-      max-width: 320px;
-      line-height: 1.4;
+      max-width: 260px;
+      line-height: 1.25;
     }
 
     .en .year {
       font-family: 'Great Vibes', cursive;
-      font-size: 3.2rem;
+      font-size: 2.1rem;
       color: #ffd166;
-      text-shadow: 0 0 24px rgba(255, 180, 0, .8);
+      text-shadow: 0 0 20px rgba(255, 180, 0, .8);
     }
 
     .as {
@@ -113,127 +111,143 @@
     }
 
     .as .bye {
-      font-size: .95rem;
+      font-size: .65rem;
       opacity: .9;
     }
 
     .as .title {
-      font-size: 2rem;
+      font-size: 1.3rem;
       background: linear-gradient(90deg, #ffe8b0, #ffd166, #fff3d6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .as .quote {
-      font-size: .8rem;
+      font-size: .6rem;
       font-style: italic;
       opacity: .85;
-      max-width: 320px;
-      line-height: 1.4;
+      max-width: 260px;
+      line-height: 1.25;
     }
 
     .as .year {
-      font-size: 2.6rem;
+      font-size: 1.8rem;
       color: #ffd166;
     }
 
     .center {
-      gap: 10px;
+      gap: 6px;
     }
 
     .countdown {
       display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
+      gap: 4px;
       justify-content: center;
     }
 
     .time-box {
-      width: 56px;
-      padding: 6px;
+      width: 44px;
+      padding: 4px;
       background: rgba(0, 0, 0, .6);
-      border-radius: 10px;
+      border-radius: 8px;
     }
 
     .time-box span {
-      font-size: 1.05rem;
+      font-size: .85rem;
       color: #ffd166;
     }
 
     .time-box small {
       font-family: 'Noto Serif Bengali', serif;
-      font-size: .55rem;
+      font-size: .45rem;
     }
 
     .input-wrap {
       width: 100%;
-      max-width: 260px;
+      max-width: 220px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 4px;
     }
 
     input {
-      padding: 10px;
-      border-radius: 30px;
+      padding: 7px;
+      border-radius: 20px;
       border: none;
       background: rgba(0, 0, 0, .65);
       color: #fff;
       text-align: center;
       font-family: 'Dancing Script', cursive;
-      font-size: .85rem;
+      font-size: .7rem;
     }
 
     button {
-      padding: 11px;
-      border-radius: 30px;
+      padding: 8px;
+      border-radius: 20px;
       border: none;
       background: linear-gradient(45deg, #ffd166, #ff8c00);
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
-      font-size: .85rem;
+      font-size: .7rem;
       cursor: pointer;
     }
 
     .link {
-      font-size: .65rem;
-      padding: 8px;
+      font-size: .5rem;
+      padding: 5px;
       background: rgba(0, 0, 0, .65);
-      border-radius: 10px;
+      border-radius: 8px;
       word-break: break-all;
-      max-width: 280px;
+      max-width: 240px;
     }
 
     @media (min-width: 900px) {
-      .columns {
-        grid-template-columns: 1fr 1.1fr 1fr;
-        align-items: center;
+      .layout {
+        padding: 16px 28px;
+        gap: 12px;
       }
 
       .top-wish {
         font-size: 1.6rem;
       }
 
+      .columns {
+        grid-template-columns: 1fr 1.1fr 1fr;
+        gap: 24px;
+      }
+
+      .en .bye {
+        font-size: 1.25rem;
+      }
+
       .en .title {
         font-size: 2.2rem;
+      }
+
+      .en .quote {
+        font-size: .95rem;
+        max-width: 420px;
       }
 
       .en .year {
         font-size: 5.1rem;
       }
 
+      .as .bye {
+        font-size: 1.1rem;
+      }
+
       .as .title {
         font-size: 2.9rem;
       }
 
-      .as .year {
-        font-size: 3.8rem;
+      .as .quote {
+        font-size: .95rem;
+        max-width: 420px;
       }
 
-      .en .quote,
-      .as .quote {
-        max-width: 420px;
-        font-size: .95rem;
+      .as .year {
+        font-size: 3.8rem;
       }
 
       .countdown {
@@ -255,20 +269,22 @@
 
       .input-wrap {
         max-width: 320px;
+        gap: 10px;
       }
 
       input {
-        font-size: 1rem;
         padding: 12px;
+        font-size: 1rem;
       }
 
       button {
-        font-size: 1rem;
         padding: 14px;
+        font-size: 1rem;
       }
 
       .link {
         font-size: .75rem;
+        padding: 8px;
       }
     }
   </style>
